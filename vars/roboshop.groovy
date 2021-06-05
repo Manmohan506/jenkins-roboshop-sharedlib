@@ -21,7 +21,6 @@ def call(Map params = [:]) {
         stage('Prepare Artifacts') {
             steps {
                 sh '''
-                echo ${COMPONENT}
                 cd static 
                 zip -r ../${COMPONENT}.zip *
                 '''         
