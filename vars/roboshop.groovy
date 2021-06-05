@@ -18,9 +18,9 @@ def call(Map params = [:]) {
 
     stages {
 
-        stage('Prepare Artifacts') {
+        stage('Prepare Artifacts - NGINX') {
             when {
-                environment name: 'COMPONENT', value: 'frontend'
+                environment name: 'APP_TYPE', value: 'NGINX'
             }
             steps {
                 sh '''
@@ -30,13 +30,42 @@ def call(Map params = [:]) {
             }
 
         }
+
+        stage('Download Dependencies') {
+            when {
+                environment name: 'APP_TYPE', value: 'NODEJS'
+
+            }
+            steps {
+                sh '''
+                 npm install
+                ''' 
+            }
+        }
+
+
+        stage('prepare Artifacts - NODEJS') {
+             when {
+                environment name: 'APP_TYPE', value: 'NODEJS'
+
+            }
+            steps {
+                sh '''
+                zip -r ${COMPONENT}.zip node_modules server.js
+               '''
+            }
+
+        }
+    
+
+        
         stage('Upload Artifacts') {
           steps {
              sh '''
                curl -f -v -u admin:DevOps321 --upload-file frontend.zip http://${NEXUS_IP}:8081/repository/frontend-1/frontend.zip
              '''
     }
-}
+ }
 
     }
 }
