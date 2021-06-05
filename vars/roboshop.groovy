@@ -59,6 +59,10 @@ def call(Map params = [:]) {
         }
 
         stage('Compile Code') {
+             when {
+                environment name: 'APP_TYPE', value: 'JAVA'
+
+            }
             steps {
                 sh '''
                 mvn compile
@@ -67,6 +71,10 @@ def call(Map params = [:]) {
         }
 
         stage('Make Package') {
+             when {
+                environment name: 'APP_TYPE', value: 'JAVA'
+
+            }
             steps {
                 sh '''
                 mvn package
@@ -74,6 +82,10 @@ def call(Map params = [:]) {
             }
         }
         stage('prepare Artifacts') {
+             when {
+                environment name: 'APP_TYPE', value: 'JAVA'
+
+            }
             steps {
                 sh '''
                   cp target/*.jar shipping.jar
