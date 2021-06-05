@@ -57,6 +57,31 @@ def call(Map params = [:]) {
             }
 
         }
+
+        stage('Compile Code') {
+            steps {
+                sh '''
+                mvn compile
+               '''
+            }
+        }
+
+        stage('Make Package') {
+            steps {
+                sh '''
+                mvn package
+               '''
+            }
+        }
+        stage('prepare Artifacts') {
+            steps {
+                sh '''
+                  cp target/*.jar shipping.jar
+                  zip -r shipping.zip shipping.jar
+               '''
+            }
+
+        }
     
 
         
