@@ -19,6 +19,9 @@ def call(Map params = [:]) {
     stages {
 
         stage('Prepare Artifacts') {
+            when {
+                environment name: 'COMPONENT', value: 'frontend'
+            }
             steps {
                 sh '''
                 cd static 
