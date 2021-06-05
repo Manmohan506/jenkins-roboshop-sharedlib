@@ -88,8 +88,22 @@ def call(Map params = [:]) {
             }
             steps {
                 sh '''
-                  cp target/*.jar shipping.jar
-                  zip -r shipping.zip shipping.jar
+                  cp target/*.jar ${COMPONENT}.jar
+                  zip -r ${COMPONENT}.zip ${COMPONENT}.jar
+               '''
+            }
+
+
+        }
+
+          stage('prepare Artifacts') {
+               when {
+                environment name: 'APP_TYPE', value: 'PYTHON'
+
+            }
+            steps {
+                sh '''
+                  zip -r ${COMPONENT}.zip payment.ini payment.py rabbitmq.py requirements.txt
                '''
             }
 
