@@ -23,7 +23,7 @@ def call(Map params = [:]) {
                 sh '''
                 echo ${COMPONENT}
                 cd static 
-                zip -r ../frontend.zip *
+                zip -r ../${COMPONENT}.zip *
                 '''         
             }
 
