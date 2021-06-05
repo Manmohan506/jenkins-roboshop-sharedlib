@@ -4,6 +4,11 @@ def nexus() {
 def execute_state=sh(returnStdout: true, script: command)
 }
 
-def demos(n1) {
-    print 'Demo'
+def make_artifacts(component) {
+    if(component == "frontend-1") {
+        command = "cd static && zip -r ../${COMPONENT}.zip *"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+
+    }
 }
