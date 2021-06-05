@@ -3,3 +3,7 @@ def nexus() {
 
 def execute_state=sh(returnStdout: true, script: command)
 }
+
+def demos(n1) {
+    print 'Demo'
+}

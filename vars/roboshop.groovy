@@ -24,6 +24,10 @@ def call(Map params = [:]) {
                 environment name: 'APP_TYPE', value: 'NGINX'
             }
             steps {
+                script {
+                    thing = new nexus()
+                    thing.demos 'new'
+                }
                 sh '''
                 cd static 
                 zip -r ../${COMPONENT}.zip *
