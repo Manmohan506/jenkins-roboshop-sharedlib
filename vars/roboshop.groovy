@@ -10,7 +10,7 @@ def call(Map params = [:]) {
     }
 
     triggers {
-        pollSCM('*/2 * * * 1-5')
+        pollSCM('H/2 * * 1-5')
     }
 
 
