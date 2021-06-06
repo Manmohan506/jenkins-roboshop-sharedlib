@@ -51,12 +51,12 @@ def call(Map params = [:]) {
           steps {
              sh '''
                curl -f -v -u admin:DevOps321 --upload-file frontend.zip http://${NEXUS_IP}:8081/repository/frontend-1/frontend.zip
-             '''
+            '''
+            }
+        }
+
     }
+
+
  }
-
-    }
-}
-
-
 }
