@@ -1,10 +1,10 @@
-def nexus() {
+ def nexus() {
  command = "curl -f -v -u admin:DevOps321 --upload-file cart.zip http://172.31.13.99:8081/repository/cart/cart.zip"
 
-def execute_state=sh(returnStdout: true, script: command)
+ def execute_state=sh(returnStdout: true, script: command) 
 }
 
-def make_artifacts(APP_TYPE, COMPONENT) {
+ def make_artifacts(APP_TYPE, COMPONENT) {
     if(APP_TYPE == "NGINX") {
         command = "cd static && zip -r ../${COMPONENT}.zip *"
         def execute_com=sh(returnStdout: true, script: command)
@@ -24,7 +24,20 @@ def make_artifacts(APP_TYPE, COMPONENT) {
      command = "zip -r ${COMPONENT}.zip payment.ini payment.py rabbitmq.py requirements.txt"
         def execute_com=sh(returnStdout: true, script: command)
         print execute_com
-
+    }
 }
 
+
+def code_build(APP_TYPE, COMPONENT) {
+    if(APP_TYPE == "NODEJS") {
+        //command = "npm install"
+        command = "env"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+
+    } else if(APP_TYPE == "JAVA") {
+        command = "mvn clean package"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+    }
 }
