@@ -32,7 +32,7 @@
 }
 
 
-def code_build(APP_TYPE, COMPONENT) {
+ def code_build(APP_TYPE, COMPONENT) {
     if(APP_TYPE == "NODEJS") {
         //command = "npm install"
         command = "env"
