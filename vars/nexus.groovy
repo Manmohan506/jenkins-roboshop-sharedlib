@@ -1,5 +1,9 @@
  def nexus() {
+<<<<<<< HEAD
  command = "curl -f -v -u admin:DevOps321 --upload-file ${FILENAME} http://172.31.13.99:8081/repository/${COMPONENT}/${FILENAME} "
+=======
+ command = "curl -f -v -u admin:DevOps321 --upload-file ${FILENAME} http://172.31.13.99:8081/repository/${COMPONENT}/${FILENAME}"
+>>>>>>> 2a756ad9ced766981cbdaec2b1874a7e50a75db3
 
  def execute_state=sh(returnStdout: true, script: command) 
 }
@@ -11,7 +15,7 @@
         print execute_com
 
     } else if(APP_TYPE == "NODEJS") {
-        command = "zip -r ${COMPONENT}.zip node_modules server.js"
+        command = "zip -r ${COMPONENT}.zip  server.js * "
         def execute_com=sh(returnStdout: true, script: command)
         print execute_com
 

@@ -50,10 +50,17 @@ def call(Map params = [:]) {
         stage('Upload Artifacts') {
           steps {
              sh '''
+<<<<<<< HEAD
                curl -f -v -u admin:DevOps321 --upload-file ${FILENAME} http://172.31.13.99:8081/repository/${COMPONENT}/${FILENAME}
             '''
             }
         }
+=======
+               curl -f -v -u admin:DevOps321 --upload-file ${FILENAME} http://172.31.13.99:8081/repository/${COMPONENT}/${FILENAME}"
+             '''
+    }
+ }
+>>>>>>> 2a756ad9ced766981cbdaec2b1874a7e50a75db3
 
     }
 
