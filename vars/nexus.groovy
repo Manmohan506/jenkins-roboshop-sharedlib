@@ -1,5 +1,5 @@
  def nexus() {
- command = "curl -f -v -u admin:DevOps321 --upload-file cart.zip http://172.31.13.99:8081/repository/cart/cart.zip"
+ command = "curl -f -v -u admin:DevOps321 --upload-file ${FILENAME} http://172.31.13.99:8081/repository/${COMPONENT}/${FILENAME}"
 
  def execute_state=sh(returnStdout: true, script: command) 
 }
